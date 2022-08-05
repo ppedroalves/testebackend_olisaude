@@ -40,6 +40,9 @@ public class Cliente {
         this.sexo = sexo;
     }
 
+
+
+
     public Integer getId() {
         return id;
     }
@@ -90,6 +93,9 @@ public class Cliente {
                 .reduce(0, Integer::sum);
     }
 
+    public Double gethealthScores(){
+        return  (1 / (1 + Math.pow(Math.E, -(-2.8 + somaProblemas())) )) * 100;
+    }
 
 
     @Override

@@ -9,8 +9,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
+import java.math.*;
 
+import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/clientes")
@@ -49,6 +52,17 @@ public class ClienteController {
     public Integer cadastrarCliente(@RequestBody ClienteDTO clienteDTO){
         Cliente clienteSalvo = clienteService.salvar(clienteDTO);
         return clienteSalvo.getId();
+    }
+
+
+    @GetMapping("/score")
+    public List<Cliente> clientesComMaiorRisco(){
+        return clienteRepository.findAll()
+                .stream()
+                .sorted(Comparator.comparing(Cliente::gethealthScores).reversed())
+                .limit(10)
+                .collect(Collectors.toList());
+
     }
 
 }

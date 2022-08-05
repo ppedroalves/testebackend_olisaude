@@ -41,6 +41,7 @@ public class OlisaudeApplication {
 			List<Cliente> clientes = Arrays.asList(c,c1,c2);
 			clienteRepository.saveAll(clientes);
 
+
 		};
 	}
 
