@@ -40,8 +40,7 @@ public class OlisaudeApplication {
 			c2.adicionarProblema(p2);
 			List<Cliente> clientes = Arrays.asList(c,c1,c2);
 			clienteRepository.saveAll(clientes);
-			clientes.stream()
-					.forEach( client -> System.out.println(client.somaProblemas()));
+
 		};
 	}
 
